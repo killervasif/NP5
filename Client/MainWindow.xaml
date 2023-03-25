@@ -1,0 +1,39 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="request">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Name="cbCommand" Margin="10" Width="100" Grid.ColumnSpan="6" SelectionChanged="cbCommand_SelectionChanged"/>
+            <TextBox Grid.Row="1" Name="txtId" Text="{Binding Car.Id,Mode=TwoWay}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtMake" IsEnabled="{Binding IsTextBoxAvialable}" Text="{Binding Car.Make,Mode=TwoWay}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Name="txtModel" Text="{Binding Car.Model,Mode=TwoWay}"  IsEnabled="{Binding IsTextBoxAvialable}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="3" Name="txtYear" Text="{Binding Car.Year,Mode=TwoWay}" IsEnabled="{Binding IsTextBoxAvialable}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="4" Name="txtVIN" Text="{Binding Car.VIN,Mode=TwoWay}" IsEnabled="{Binding IsTextBoxAvialable}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="5" Name="txtColor" Text="{Binding Car.Color,Mode=TwoWay}" IsEnabled="{Binding IsTextBoxAvialable}" Margin="5"/>
+            <Button  Grid.ColumnSpan="6" Grid.Row="2" Width="140" Content="Send request" Click="Button_Click"/>
+        </Grid>
+        <DataGrid x:Name="CarList" Grid.Row="1" ItemsSource="{Binding Cars}" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"/>
+    </Grid>
+</Window>
